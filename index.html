@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smeet Wankhade | Cloud Computing Professional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --accent: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+        }
+        
+        .profile-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            margin-top: 1rem;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-img {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .project-info p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .project-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .skill-item {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-item i {
+            color: var(--secondary);
+        }
+        
+        /* Education Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile {
+                flex-direction: column;
+                margin-bottom: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="profile">
+                <!-- Replace with your actual image -->
+                <img src="photo.jpg" alt="Smeet Wankhade" class="profile-img">
+                <div class="profile-text">
+                    <h1>Smeet Wankhade</h1>
+                    <p>Cloud Computing & Virtualization Technology Specialist</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand</p>
+                        <p><i class="fas fa-phone"></i> +91-9881679588</p>
+                        <p><i class="fas fa-envelope"></i> smeetwankhade2610@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Motivated and detail-oriented B.Tech student specializing in Cloud Computing and Virtualization Technology, with a strong foundation in Java and Data Structures & Algorithms. Seeking a challenging role in a reputable IT company to apply problem-solving skills, technical expertise, and collaborative experience in contributing to innovative projects and driving technological growth.</p>
+                    <p>With multiple AWS certifications and hands-on experience in cloud services, I bring both theoretical knowledge and practical skills to any development team. My experience in building full-stack applications and managing cloud infrastructure makes me a versatile candidate for various technical roles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Docker Experiments</h3>
+                        <p>Docker Experiments</p>
+                        <div class="project-links">
+                            <a href="https://github.com/smeetw2610/Docker-Experiments"><i class="fab fa-github"></i> View Code</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more project cards as needed -->
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>AWS Cloud Architecture</h3>
+                        <p>Implemented a scalable cloud infrastructure using AWS services including EC2, S3, RDS, and Lambda Functions. Designed VPC configurations for optimal network performance and security.</p>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> View Code</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-item"><i class="fas fa-check"></i> Java</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> MySQL</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> HTML/CSS/JavaScript</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Data Structures & Algorithms</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Cloud Technologies</h3>
+                    <div class="skill-item"><i class="fas fa-check"></i> AWS EC2, S3, RDS</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Lambda Functions</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> VPC Configuration</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Cloud Security</div>
+                </div>
+                <div class="skill-category">
+                    <h3>Professional Skills</h3>
+                    <div class="skill-item"><i class="fas fa-check"></i> Problem Solving</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Team Collaboration</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Project Management</div>
+                    <div class="skill-item"><i class="fas fa-check"></i> Communication</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Technology in Computer Science</h3>
+                        <p>Cloud Computing and Virtualization Technology</p>
+                        <p>University of Petroleum and Energy Studies (UPES)</p>
+                        <p>Aug 2022 - May 2026</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Class XII</h3>
+                        <p>Horizon Public School</p>
+                        <p>2021 - 2022</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Class X</h3>
+                        <p>St. Francis High School</p>
+                        <p>2019 - 2020</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 4rem; text-align: center; color: var(--primary);">Certifications</h3>
+            <div class="skills-container" style="margin-top: 2rem;">
+                <div class="skill-category">
+                    <h3>AWS Certifications</h3>
+                    <div class="skill-item"><i class="fas fa-certificate"></i> AWS Cloud Practitioner</div>
+                    <div class="skill-item"><i class="fas fa-certificate"></i> AWS Academy Cloud Architecting</div>
+                    <div class="skill-item"><i class="fas fa-certificate"></i> AWS Academy Cloud Security</div>
+                    <div class="skill-item"><i class="fas fa-certificate"></i> AWS Associate Architect</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dehradun, Uttarakhand, India</p>
+                    <p><i class="fas fa-phone"></i> +91-9881679588</p>
+                    <p><i class="fas fa-envelope"></i> smeetwankhade2610@gmail.com</p>
+                    
+                    <h3 style="margin-top: 2rem;">Extra-Curricular Activities</h3>
+                    <p><i class="fas fa-hands-helping"></i> Volunteer, Rural Healthcare Management NGO</p>
+                    <p><i class="fas fa-users"></i> Volunteer, Interschool Scout & Guide Event</p>
+                    <p><i class="fas fa-heart"></i> Interests: Cycling, Trekking, Solo trips, Badminton</p>
+                    
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Smeet Wankhade. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
